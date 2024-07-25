@@ -66,24 +66,10 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 	} else if (request.message === 'stop') {
 		observer.disconnect(); // Stop observing
 		articles.clear();
+		sendResponse({articles: Array.from(articles.values())}); // Send articles as response
 	} else if (request.message === 'showAll') {
 		showAll(); // Show all hidden items
 	} else if (request.message === 'getArticles') {
 		sendResponse({articles: Array.from(articles.values())}); // Send articles as response
 	}
 });
-
-
-/*function displayArticlesInTab2() {
-	// Sort the articles array by price
-	let sortedArticles = [...articles].sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
-
-	let tab2Content = ''; // Initialize Tab 2 content
-	for (let i = 0; i < sortedArticles.length; i++) {
-		const article = sortedArticles[i];
-		tab2Content += `<p>Name: ${article.name}</p>`; // Append the article name to Tab 2 content
-		tab2Content += `<p>Price: ${article.price}</p>`; // Append the article price to Tab 2 content
-		tab2Content += `<p><a href="${article.link}" target="_blank">Link</a></p>`; // Append the article link to Tab 2 content
-	}
-	document.getElementById('Tab2').innerHTML = tab2Content; // Set the content of Tab 2
-}*/
