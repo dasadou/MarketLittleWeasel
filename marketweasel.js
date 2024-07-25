@@ -65,6 +65,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 		observer.observe(table, config); // Start observing
 	} else if (request.message === 'stop') {
 		observer.disconnect(); // Stop observing
+		articles.clear();
 	} else if (request.message === 'showAll') {
 		showAll(); // Show all hidden items
 	} else if (request.message === 'getArticles') {
