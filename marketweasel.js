@@ -70,6 +70,6 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 	} else if (request.message === 'showAll') {
 		showAll(); // Show all hidden items
 	} else if (request.message === 'getArticles') {
-		sendResponse({articles: Array.from(articles.values())}); // Send articles as response
+		sendResponse({articles: Array.from(articles.values())});
 	}
 });

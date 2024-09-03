@@ -21,11 +21,11 @@
 }
 
 body {
-	width: 300px; /* Adjust width as needed */
-	height: 600px; /* Adjust height as needed */
+	width: 300px;
+	height: 600px;
 	margin: 0 auto;
-	font-family: Arial, sans-serif; /* Optional: Set the font family */
-	background-color: #f0f0f0; /* Optional: Set a background color */
-	box-sizing: border-box; /* Ensures padding does not add extra width/height */
-	padding: 20px; /* Optional: Add some padding */
+	font-family: Arial, sans-serif;
+	background-color: #f0f0f0;
+	box-sizing: border-box;
+	padding: 20px;
 }
