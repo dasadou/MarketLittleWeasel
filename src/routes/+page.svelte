@@ -21,8 +21,7 @@
 	}
   </script>
   
-  <body class="bg-gray-100 dark:bg-gray-900 min-h-screen transition-colors duration-300">
-	<div id="tab1-content" class="tabcontent p-4">
+  <body class=" dark:bg-gray-900  duration-300">
 	  <h1 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Hello les peoples</h1>
 	  <div class="mb-2">
 		<label for="keyword" class="text-md font-medium text-gray-700 dark:text-gray-300">Keyword:</label>
@@ -33,6 +32,8 @@
 		<button on:click={stopObserving} class="flex-grow px-3 py-2 bg-red-500 text-white rounded-md shadow-sm hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500">Stop Observing</button>
 		<button on:click={revert} class="flex-grow px-3 py-2 bg-gray-500 text-white rounded-md shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500">Revert</button>
 	  </div>
-	</div>
   </body>
   
+  <!-- Add help section then add special characters like && || () or even use NLP to search in a better way
+ Example (DDR 4) && ((2x16 GB) || (2 x 16))  etc etc.
+  -->

@@ -54,6 +54,7 @@ function showAll() {
     const childNode = children[i];
     childNode.style.display = ""; // Unhide the child node
   }
+  articles.clear();
 }
 
 // Listen for messages from the popup
@@ -64,7 +65,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     observer.observe(table, config); // Start observing
   } else if (request.message === 'stop') {
     observer.disconnect(); // Stop observing
-    articles.clear();
+    // articles.clear();
     sendResponse({ articles: Array.from(articles.values()) }); // Send articles as response
   } else if (request.message === 'revert') {
     showAll(); // Show all hidden items

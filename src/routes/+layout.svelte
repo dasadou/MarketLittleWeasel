@@ -9,9 +9,16 @@
 	let currentTheme;
   
 	onMount(() => {
+		currentTheme = localStorage.getItem('theme') || 'light';
+		console.log("retrieved theme: " + currentTheme);
+		
 	  theme.subscribe(value => {
+		console.log("its "+value);
 		currentTheme = value;
+		console.log("Setting to " + currentTheme);
 		document.documentElement.classList.toggle('dark', currentTheme === 'dark');
+		console.log("Set to " + currentTheme);
+		localStorage.setItem('theme', currentTheme);
 	  });
 	});
   </script>
@@ -38,7 +45,7 @@
 		</button>
 	  </div>
 	</nav>
-	<main class="max-w-7xl mx-auto sm:px-6 lg:px-8 ">
+	<main class="max-w-7xl mx-2.5 sm:px-6 lg:px-8 ma">
 	  <slot></slot>
 	</main>
   </div>
