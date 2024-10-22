@@ -1,0 +1,36 @@
+{
+	"name": "MarketLittleWeasel",
+	"description": "Chrome extension built with Sveltekit and JavaScript. Filter FBMarketplace results and sort by price",
+	"version": "0.0.1",
+	"manifest_version": 3,
+	"icons": {
+		"32": "favicon.png"
+	},
+	"permissions": [
+		"scripting",
+		"tabs",
+		"activeTab"
+	],
+	"action": {
+		"default_popup": "index.html",
+		"default_icon": "LittleWeasel.png",
+		"default_title": "MarketLittleWeasel"
+	},
+	"background": {
+		"service_worker": "background.js"
+	},
+	"content_scripts": [
+		{
+			"matches": [
+				"<all_urls>"
+			],
+			"js": [
+				"content.js"
+			]
+		}
+	],
+	"host_permissions": [
+		"http://*/*",
+		"https://*/*"
+	]
+}
