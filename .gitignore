@@ -5,7 +5,8 @@ node_modules
 .vercel
 /.svelte-kit
 /build
-
+build.crx
+build.pem
 # OS
 .DS_Store
 Thumbs.db

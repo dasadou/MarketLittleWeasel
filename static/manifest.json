@@ -1,6 +1,6 @@
 {
-	"name": "sveltension-template",
-	"description": "Example Chrome extension built with Sveltekit and Skeleton",
+	"name": "MarketLittleWeasel",
+	"description": "Chrome extension built with Sveltekit and JavaScript. Filter FBMarketplace results and sort by price",
 	"version": "0.0.1",
 	"manifest_version": 3,
 	"icons": {
@@ -13,8 +13,8 @@
 	],
 	"action": {
 		"default_popup": "index.html",
-		"default_icon": "favicon.png",
-		"default_title": "sveltension-template"
+		"default_icon": "LittleWeasel.png",
+		"default_title": "MarketLittleWeasel"
 	},
 	"background": {
 		"service_worker": "background.js"

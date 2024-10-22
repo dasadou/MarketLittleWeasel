@@ -18,8 +18,11 @@
 
 	onMount(async () => {
 		const response = await getArticles();
-		articles = Object.values(response.articles);
-		sortedArticles = [...articles].sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
+		console.log(response);
+		if(response){
+			articles = Object.values(response.articles);
+			sortedArticles = [...articles].sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
+		}
 	});
 </script>
 
@@ -35,4 +38,3 @@
       {/each}
   </div>
 </main>
-<!-- Stop here -->

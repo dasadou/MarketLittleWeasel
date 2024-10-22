@@ -10,16 +10,11 @@
   
 	onMount(() => {
 		currentTheme = localStorage.getItem('theme') || 'light';
-		console.log("retrieved theme: " + currentTheme);
-		
-	  theme.subscribe(value => {
-		console.log("its "+value);
-		currentTheme = value;
-		console.log("Setting to " + currentTheme);
-		document.documentElement.classList.toggle('dark', currentTheme === 'dark');
-		console.log("Set to " + currentTheme);
-		localStorage.setItem('theme', currentTheme);
-	  });
+		theme.subscribe((value) => {
+			currentTheme = value;
+			document.documentElement.classList.toggle('dark', currentTheme === 'dark');
+			localStorage.setItem('theme', currentTheme);
+		});
 	});
   </script>
   
