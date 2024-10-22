@@ -1,3 +1,6 @@
+# MarketLittleWeasel
+Svelte extension that allows to hide Facebook Marketplace items that dont math your keywords
+
 # create-svelte
 
 Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
