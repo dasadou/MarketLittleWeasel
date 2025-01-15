@@ -1,29 +1,34 @@
 <script>
-	import { onMount } from 'svelte';
-	import '../../app.css';
-	let articles = [];
-	/**
-	 * @type {any[]}
-	 */
-	let sortedArticles = [];
+    import { onMount } from 'svelte';
+    import '../../app.css';
+    let articles = [];
+    let sortedArticles = [];
 
-	async function getArticles() {
-		const tabs = await chrome.tabs.query({ active: true, currentWindow: true });
-		const activeTab = tabs[0];
-		chrome.tabs.sendMessage(activeTab.id || 0, { message: 'getArticles' }, function (response) {
-			articles = Object.values(response.articles);
-			sortedArticles = [...articles].sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
-		});
-	}
+    async function getArticles() {
+        const tabs = await chrome.tabs.query({ active: true, currentWindow: true });
+        const activeTab = tabs[0];
 
-	onMount(async () => {
-		const response = await getArticles();
-		console.log(response);
-		if(response){
-			articles = Object.values(response.articles);
-			sortedArticles = [...articles].sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
-		}
-	});
+        return new Promise((resolve) => {
+            chrome.tabs.sendMessage(activeTab.id || 0, { message: 'getArticles' }, (response) => {
+                resolve(response);
+            });
+        });
+    }
+
+    // Use onMount to fetch articles when the component is mounted
+    onMount(async () => {
+        try {
+            const response = await getArticles();
+            if (response) {
+                articles = Object.values(response.articles);
+                // Sort articles by price in ascending order
+                sortedArticles = [...articles].sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
+                console.log(sortedArticles);
+            }
+        } catch (error) {
+            console.error('Error fetching articles:', error);
+        }
+    });
 </script>
 
 <main class="max-w-7xl mx-auto sm:px-6 lg:px-8">
