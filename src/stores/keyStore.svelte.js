@@ -1,2 +1,1 @@
-﻿
-export const keyWord = $state({word:'key'});
+﻿export const conditions = $state([ { type: 'keyword', value: { word: 'key' } } ]);

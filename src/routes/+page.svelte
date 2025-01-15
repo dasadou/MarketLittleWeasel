@@ -1,11 +1,16 @@
 <script>
-    import {keyWord} from '../stores/keyStore.svelte.js';
+    import LogicBuilder from "$lib/LogicBuilder.svelte";
+    import {conditions} from "../stores/keyStore.svelte.js";
 
     async function startObserving() {
         const tabs = await chrome.tabs.query({active: true, currentWindow: true});
         const activeTab = tabs[0];
-        console.log(keyWord.word);
-        chrome.tabs.sendMessage(activeTab.id || 0, {message: 'start', keyword: keyWord.word});
+        // console.log(conditions.map(cond => cond.value.word).join(' '));
+        console.log(conditions);
+        chrome.tabs.sendMessage(activeTab.id || 0, {
+            message: 'start',
+            conditions: conditions
+        });
     }
 
     async function stopObserving() {
@@ -21,12 +26,8 @@
     }
 </script>
 
-<h1 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Hello les peoples</h1>
-<div class="mb-2">
-    <label for="keyword" class="text-md font-medium text-gray-700 dark:text-gray-300">Keyword:</label>
-    <input bind:value={keyWord.word} type="text" id="keyword" placeholder="Enter your keyword"
-           class="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"/>
-</div>
+<LogicBuilder/>
+
 <div class="flex space-x-2">
     <button on:click={startObserving}
             class="flex-grow px-3 py-2 bg-blue-500 text-white rounded-md shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
