@@ -38,15 +38,22 @@ function hideArticles(startIndex) {
         const linkElement = childNode.querySelector("[role='link']");
 
         if (priceElement && linkElement) {
-          const priceText = priceElement.textContent;
-          const price = parseFloat(priceText.replace(/[^0-9\.]/g, "").replace(/(\.[0-9]*?)0+$/, "$1").replace(/\.$/, ""));
-          const link = linkElement.href; // Changed this line
+          const priceText = priceElement.textContent.trim();
+          let price = parseFloat(priceText.replace(/[^0-9\.]/g, "").replace(/(\.[0-9]*?)0+$/, "$1").replace(/\.$/, ""));
+
+          // If price is NaN, set it to 0
+          if (isNaN(price)) {
+            price = 0;
+          }
+
+          const link = linkElement.href;
           articles.set(link, { name: articleName, price: price, link: link }); // Save the article
         }
       }
     }
   }
 }
+
 
 function showAll() {
   const children = table.children;

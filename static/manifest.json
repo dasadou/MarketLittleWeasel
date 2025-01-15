@@ -4,7 +4,7 @@
 	"version": "0.0.1",
 	"manifest_version": 3,
 	"icons": {
-		"32": "favicon.png"
+		"32":  "LittleWeasel.png"
 	},
 	"permissions": [
 		"scripting",
@@ -15,9 +15,6 @@
 		"default_popup": "index.html",
 		"default_icon": "LittleWeasel.png",
 		"default_title": "MarketLittleWeasel"
-	},
-	"background": {
-		"service_worker": "background.js"
 	},
 	"content_scripts": [
 		{
