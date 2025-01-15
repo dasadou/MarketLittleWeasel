@@ -4,8 +4,8 @@
     async function startObserving() {
         const tabs = await chrome.tabs.query({active: true, currentWindow: true});
         const activeTab = tabs[0];
-        chrome.tabs.sendMessage(activeTab.id || 0, {message: 'start', keyword: keyWord.word});
         console.log(keyWord.word);
+        chrome.tabs.sendMessage(activeTab.id || 0, {message: 'start', keyword: keyWord.word});
     }
 
     async function stopObserving() {
@@ -17,7 +17,7 @@
     async function revert() {
         const tabs = await chrome.tabs.query({active: true, currentWindow: true});
         const activeTab = tabs[0];
-        chrome.tabs.sendMessage(activeTab.id || 0, {message: 'showAll'});
+        chrome.tabs.sendMessage(activeTab.id || 0, {message: 'revert'});
     }
 </script>
 
