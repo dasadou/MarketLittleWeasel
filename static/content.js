@@ -55,7 +55,7 @@ function parse(tokens) {
 	function parseExpression() {
 		let left = parseTerm();
 
-		while (index < tokens.length && (tokens[index] === "AND" || tokens[index] === "OR")) {
+		while (index < tokens.length && (tokens[index] === 'AND' || tokens[index] === 'OR')) {
 			const operator = tokens[index++];
 			const right = parseTerm();
 			left = { type: operator, left, right };
@@ -65,16 +65,16 @@ function parse(tokens) {
 	}
 
 	function parseTerm() {
-		if (tokens[index] === "(") {
+		if (tokens[index] === '(') {
 			index++;
 			const expression = parseExpression();
-			if (tokens[index++] !== ")") throw new Error("Expected closing parenthesis");
+			if (tokens[index++] !== ')') throw new Error('Expected closing parenthesis');
 			return expression;
-		} else if (tokens[index] === "NOT") {
+		} else if (tokens[index] === 'NOT') {
 			index++;
-			return { type: "NOT", value: parseTerm() };
+			return { type: 'NOT', value: parseTerm() };
 		} else {
-			return { type: "KEYWORD", value: tokens[index++].replace(/"/g, "") };
+			return { type: 'KEYWORD', value: tokens[index++].replace(/"/g, '') };
 		}
 	}
 
@@ -86,13 +86,13 @@ function evaluateAST(ast, text) {
 	text = text.toLowerCase();
 
 	switch (ast.type) {
-		case "AND":
+		case 'AND':
 			return evaluateAST(ast.left, text) && evaluateAST(ast.right, text);
-		case "OR":
+		case 'OR':
 			return evaluateAST(ast.left, text) || evaluateAST(ast.right, text);
-		case "NOT":
+		case 'NOT':
 			return !evaluateAST(ast.value, text);
-		case "KEYWORD":
+		case 'KEYWORD':
 			// Use word boundaries to ensure exact matching
 			return new RegExp(`\\b${ast.value.toLowerCase()}\\b`).test(text);
 		default:
@@ -107,7 +107,7 @@ function evaluateBooleanExpression(text, expression) {
 		const ast = parse(tokens);
 		return evaluateAST(ast, text);
 	} catch (error) {
-		console.error("Error evaluating boolean expression:", error);
+		console.error('Error evaluating boolean expression:', error);
 		return false;
 	}
 }
@@ -122,9 +122,9 @@ function hideArticles(startIndex) {
 		extractArticleDetails(childNode); // Extract article details
 
 		if (!evaluateBooleanExpression(childNode.textContent, keyword)) {
-			childNode.style.display = "none"; // Hide the child node
+			childNode.style.display = 'none'; // Hide the child node
 		} else {
-			childNode.style.display = ""; // Ensure matching articles are visible
+			childNode.style.display = ''; // Ensure matching articles are visible
 		}
 	}
 }
@@ -135,7 +135,7 @@ function showAllArticles() {
 	if (!children) return;
 
 	for (let i = 0; i < children.length; i++) {
-		children[i].style.display = ""; // Unhide the child node
+		children[i].style.display = ''; // Unhide the child node
 	}
 	articles.clear();
 }
@@ -152,16 +152,16 @@ function handleMessage(request, sender, sendResponse) {
 			observer.observe(cachedElements.table, { childList: true }); // Start observing
 			break;
 		case 'stop':
-			console.log("Stopping observation"); // Debug log
+			console.log('Stopping observation'); // Debug log
 			observer.disconnect(); // Stop observing
 			sendResponse({ articles: Array.from(articles.values()) }); // Send articles as response
 			break;
 		case 'revert':
-			console.log("Reverting changes"); // Debug log
+			console.log('Reverting changes'); // Debug log
 			showAllArticles(); // Show all hidden items
 			break;
 		case 'getArticles':
-			console.log("Fetching articles"); // Debug log
+			console.log('Fetching articles'); // Debug log
 			sendResponse({ articles: Array.from(articles.values()) });
 			break;
 	}

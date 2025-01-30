@@ -8,17 +8,17 @@ const config = {
 
 	kit: {
 		adapter: adapter({
-			// default options are shown. On some platforms			
-			// these options are set automatically — see below			
+			// default options are shown. On some platforms
+			// these options are set automatically — see below
 			pages: 'build',
 			assets: 'build',
-			//   fallback: undefined, 
+			//   fallback: undefined,
 			fallback: null,
 			precompress: false,
 			// strict: true,
 			manifest: 'manifest.json'
 		}),
-		appDir: 'app',
+		appDir: 'app'
 	}
 };
 

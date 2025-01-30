@@ -6,5 +6,5 @@ export const expressionParts = $state<ExpressionPart[]>([
 	{ type: 'input', value: 'DDR4' }, // Default keyword
 	{ type: 'operator', value: 'AND' }, // Default operator
 	{ type: 'input', value: '32' }, // Default keyword
-	{ type: 'parenthesis', value: ')' }, // Close parenthesis
+	{ type: 'parenthesis', value: ')' } // Close parenthesis
 ]);
