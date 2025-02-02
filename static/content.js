@@ -9,7 +9,7 @@ let keyword; // Declare keyword variable
 let articles = new Map(); // Use a Map to store articles
 let timeoutId = null; // Initialize debounce variable
 
-// Cache frequently used DOM elements
+// Cache frequently used DOM elements // Je comprend pas exactement mais on va y croire
 const cachedElements = {
 	table: document.querySelector(TABLE_ELEMENT)
 };

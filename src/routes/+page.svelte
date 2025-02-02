@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { expressionParts } from '../stores/keyStore.svelte';
 	import ExpressionBuilder from '$lib/ExpressionBuilder.svelte';
 
 	let debugLogs: string[] = []; // Array to store debug logs

@@ -32,7 +32,6 @@
 
 <!-- Dynamic Expression Builder -->
 <div class="mb-2">
-	<label class="text-md font-medium text-gray-700 dark:text-gray-300">Build your search:</label>
 	<div class="mt-1 space-y-2">
 		{#each expressionParts as part, index}
 			<div class="flex items-center space-x-2">
@@ -99,7 +98,7 @@
 
 <!-- Search Preview -->
 <div class="mb-4">
-	<label class="text-md font-medium text-gray-700 dark:text-gray-300">Search Preview:</label>
+	<p class="text-md font-medium text-gray-700 dark:text-gray-300">Search Preview:</p>
 	<div class="mt-1 p-3 bg-gray-100 dark:bg-gray-800 rounded-md">
 		<pre class="text-sm text-gray-900 dark:text-gray-200">{generateExpression()}</pre>
 	</div>
