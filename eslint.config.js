@@ -14,6 +14,7 @@ export default tseslint.config(
 		languageOptions: {
 			globals: {
 				...globals.browser,
+				...globals.webextensions,
 				...globals.node
 			}
 		}

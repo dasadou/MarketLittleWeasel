@@ -1,4 +1,3 @@
-﻿<!-- src/components/ExpressionBuilder.svelte -->
 <script lang="ts">
 	import { expressionParts } from '../stores/keyStore.svelte';
 
